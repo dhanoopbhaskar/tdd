@@ -1,7 +1,11 @@
 package com.demo.tdd;
 
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+
 import com.demo.tdd.domain.Car;
 
+@Service
 public class CarService {
 
 	private CarRepository carRepository;
@@ -10,6 +14,7 @@ public class CarService {
 		this.carRepository = carRepository;
 	}
 
+	@Cacheable("cars")
 	public Car getCarDetails(String name) {
 		// TODO Auto-generated method stub
 		Car car = this.carRepository.findByName(name);

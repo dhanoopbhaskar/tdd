@@ -1,7 +1,6 @@
 package com.demo.tdd;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,9 +19,8 @@ public class CarController {
 	}
 
 	@GetMapping("/cars/{name}")
-	public ResponseEntity<Car> getCar(@PathVariable String name) {
-		return ResponseEntity.ok().body(carService.getCarDetails(name));
-//		return ResponseEntity.ok().body(new Car("prius", "hybrid"));
+	public Car getCar(@PathVariable String name) {		
+		return this.carService.getCarDetails(name);
 	}
 
 	@ExceptionHandler
